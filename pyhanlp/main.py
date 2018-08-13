@@ -98,8 +98,8 @@ def main():
             print(HanLP.parseDependency(any2utf8(line)))
     elif args.task == 'serve':
         if PY == 3:
-            from pyhanlp import server
-            server.run(port=args.port)
+            from pyhanlp import app
+            app.app.run(host="0.0.0.0", port=args.port, debug=False)
         else:
             die('现在server.py暂时不支持Python2，欢迎参与移植')
     elif args.task == 'update':

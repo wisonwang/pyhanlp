@@ -1,0 +1,73 @@
+{% extends 'admin/model/list.html' %}
+
+
+{% block head %}
+{{ super() }}
+{{ lib.form_css() }}
+{% endblock %}
+
+{% block body %}
+
+<form>
+    <div class="row" style="padding-bottom:30px">
+        <div class="col-lg-8">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    content:
+                </span>
+                <textarea class="form-control .textarea"
+                          placeholder="content" value="{{content}}" name="content">{{content}}</textarea>
+            </div>
+        </div>
+
+        <div class="col-lg-2">
+            算法：
+            <select name="algorithm" id="algorithm" value={{algorithm}}>
+                <option value="parseDependency">依存文法分析</option>
+                <option value="extractPhrase">提取短语</option>
+                <option value="extractWords">提取词语</option>
+                <option value="extractKeyword">提取关键词</option>
+                <option value="extractSummary">自动摘要</option>
+                <option value="getSummary">摘要文本</option>
+            </select>
+        </div>
+
+        <div class="col-lg-2">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    size:
+                </span>
+                <input type="text" class="form-control"
+                       placeholder="size 可选" value="{{size}}" name="size">
+            </div>
+        </div>
+
+        <div class="col-lg-2">
+            <button type="submit" class="btn btn-default" onclick="submit()">请求</button>
+        </div>
+    </div>
+</form>
+
+<div class="panel panel-default">
+
+    <div class="panel-body col-lg-10">
+        <div class="panel-heading">结果</div>
+        <div>
+
+            <p>{{sentence}}</p>
+        </div>
+    </div>
+
+</div>
+
+
+<script type="text/javascript">   
+ //获得下拉列表对象   
+ rectypeOpt = document.getElementById("algorithm");
+ rectypeOpt.value = '{{algorithm}}'
+ 
+</script>
+
+
+{% endblock %}
+
